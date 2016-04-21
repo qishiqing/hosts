@@ -1,0 +1,11 @@
+# global
+!.gitkeep
+.DS_Store
+.Spotlight-v100
+*~
+
+# Windows
+Thumbs.db
+ehtuumbs.db
+Desktop.ini
+.Trashes
