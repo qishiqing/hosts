@@ -14,11 +14,11 @@ if [ -f $tmpfile ]; then
     exit 0
 else
     curl -fLo $tmpfile $remotefile
-    diff -r $tmpfile ${filepath} > /dev/null
+    diff -r $tmpfile $filepath > /dev/null
     if [ $? -eq 0 ]; then
         rm $tmpfile
     else
-        cp -f $tmpfile ${filepath}
+        cp -f $tmpfile $filepath
         rm $tmpfile
     fi
 fi
