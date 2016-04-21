@@ -6,7 +6,7 @@
 # Distributed under terms of the GPLv3 license.
 #
 
-filepath=`cd $(dirname $0); pwd`
+filepath=`cd $(dirname $0); pwd`/hosts
 remotefile=https://raw.githubusercontent.com/racaljk/hosts/master/hosts
 tmpfile=/tmp/remote-hosts
 
@@ -14,6 +14,11 @@ if [ -f $tmpfile ]; then
     exit 0
 else
     curl -fLo $tmpfile $remotefile
-    cp -f $tmpfile ${filepath}/hosts
-    rm $tmpfile
+    diff -r $tmpfile ${filepath} > /dev/null
+    if [ $? -eq 0 ]; then
+        rm $tmpfile
+    else
+        cp -f $tmpfile ${filepath}
+        rm $tmpfile
+    fi
 fi
