@@ -7,7 +7,8 @@
 #
 
 filepath=`cd $(dirname $0); pwd`/hosts
-remotefile=https://raw.githubusercontent.com/racaljk/hosts/master/hosts
+#remotefile=https://raw.githubusercontent.com/racaljk/hosts/master/hosts
+remotefile=https://coding.net/u/scaffrey/p/hosts/git/raw/master/hosts
 tmpfile=/tmp/remote-hosts
 
 if [ -f $tmpfile ]; then
