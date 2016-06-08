@@ -14,12 +14,12 @@ tmpfile=/tmp/remote-hosts
 if [ -f $tmpfile ]; then
     exit 0
 else
-    curl -fLo $tmpfile $remotefile
-    diff -r $tmpfile $filepath > /dev/null
+    curl -fLo $tmpfile $remotefile; sed -e '1,13'd $tmpfile > $tmpfile.new
+    diff -r $tmpfile.new $filepath > /dev/null
     if [ $? -eq 0 ]; then
-        rm $tmpfile
+        rm $tmpfile{,.new}
     else
-        cp -f $tmpfile $filepath
-        rm $tmpfile
+        cp -f $tmpfile.new $filepath
+        rm $tmpfile{,.new}
     fi
 fi
